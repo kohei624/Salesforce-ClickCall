@@ -1,0 +1,55 @@
+<!--
+Copyright 2016 salesforce.com, inc. All rights reserved. 
+
+Use of this software is subject to the salesforce.com Developerforce Terms of Use and other applicable terms that salesforce.com may make available, as may be amended from time to time. You may not decompile, reverse engineer, disassemble, attempt to derive the source code of, decrypt, modify, or create derivative works of this software, updates thereto, or any part thereof. You may not use the software to engage in any development activity that infringes the rights of a third party, including that which interferes with, damages, or accesses in an unauthorized manner the servers, networks, or other properties or services of salesforce.com or any third party.
+
+WITHOUT LIMITING THE GENERALITY OF THE FOREGOING, THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED. IN NO EVENT SHALL SALESFORCE.COM HAVE ANY LIABILITY FOR ANY DAMAGES, INCLUDING BUT NOT LIMITED TO, DIRECT, INDIRECT, SPECIAL, INCIDENTAL, PUNITIVE, OR CONSEQUENTIAL DAMAGES, OR DAMAGES BASED ON LOST PROFITS, DATA OR USE, IN CONNECTION WITH THE SOFTWARE, HOWEVER CAUSED AND, WHETHER IN CONTRACT, TORT OR UNDER ANY OTHER THEORY OF LIABILITY, WHETHER OR NOT YOU HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+-->
+
+<apex:page showChat="false" showHeader="false" applyHtmlTag="false" applyBodyTag="false" sideBar="false">
+    <apex:includeLightning/>
+    <script type="text/javascript" src="/support/api/42.0/lightning/opencti.js"></script>
+    <script type="text/javascript" src="https://call-devel.frd.cloud/public/sp.core.js"></script>
+    <div id="lightning"></div>
+
+    <script type="text/javascript">
+        $Lightning.use("c:demoAdapterOut", function() {
+            $Lightning.createComponent("c:demoAdapter", 
+            {},
+            "lightning",
+            function(cmp) {
+                
+            });
+        });
+        const handleEvent = ({ state, ctx }) => {
+            console.log({ state, ctx })
+
+            if (state === "sipCall_incoming") {
+                console.log("----------------------incoming call-----------------")
+            }
+        }
+        function addCSPMetaTag() {
+            var meta = document.createElement('meta');
+            meta.setAttribute('http-equiv','Content-Security-Policy')
+            meta.setAttribute('name', 'Content-Security-Policy');
+            meta.setAttribute('content', `script-src 'self' 'unsafe-inline' 'nonce-RxJCc6yb1GhVmDMfGpaUzBzizjlh6Czp' chrome-extension: 'unsafe-eval' *.canary.lwc.dev *.vf.force.com blob: https://ssl.gstatic.com/accessibility/ https://static.lightning.force.com https://*.arcgis.com`);
+            document.getElementsByTagName('head')[0].appendChild(meta);
+        }
+        window.onload = function() {
+            const configs = {
+                prefix: "5556789",
+                displayName: "9008",
+                privateIdentity: "9008",
+                publicIdentity: `sip:9008@call-devel.frd.cloud`,
+                password: "Zcbm1234",
+                realm: "call-devel.frd.cloud"
+            }
+            addCSPMetaTag()
+            globalThis.addEngineEventListener(handleEvent)
+            globalThis.sipHangUp()
+            setTimeout(() => globalThis.sipUnRegister(), 1000)
+            setTimeout(() => globalThis.sipRegister(configs), 2000)
+        };
+    </script>
+    
+</apex:page>
