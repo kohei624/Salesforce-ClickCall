@@ -66,7 +66,7 @@
         <items>
             <label>Simulated Incoming Phone Number</label>
             <name>reqIncomingNumber</name>
-            <value>4157157447</value>
+            <value></value>
         </items>
         <items>
             <label>Minimum Number of Digits to Dial</label>

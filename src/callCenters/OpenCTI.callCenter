@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CallCenter xmlns="http://soap.sforce.com/2006/04/metadata">
-    <adapterUrl>https://frd2-dev-ed.develop.lightning.force.com/apex/upsellTechCall</adapterUrl>
+    <adapterUrl>/apex/upsellTechCall</adapterUrl>
     <customSettings>{&quot;reqTimeout&quot;:&quot;10000&quot;,&quot;reqStandbyUrl&quot;:&quot;/apex/upsellTechCall&quot;,&quot;reqSoftphoneHeight&quot;:&quot;550&quot;,&quot;reqSoftphoneWidth&quot;:&quot;400&quot;,&quot;reqUseApi&quot;:&quot;true&quot;,&quot;reqSalesforceCompatibilityMode&quot;:&quot;Classic_and_Lightning&quot;}</customSettings>
     <displayName>Upsellコールセンター</displayName>
     <displayNameLabel>Display Name</displayNameLabel>
@@ -9,12 +9,12 @@
         <items>
             <label>CTI Adapter URL</label>
             <name>reqAdapterUrl</name>
-            <value>https://frd2-dev-ed.develop.lightning.force.com/apex/upsellTechCall</value>
+            <value>/apex/upsellTechCall</value>
         </items>
         <items>
             <label>CTI Adapter URL2</label>
             <name>reqStandbyUrl</name>
-            <value>https://frd2-dev-ed.develop.lightning.force.com/apex/upsellTechCall</value>
+            <value>/apex/upsellTechCall</value>
         </items>
         <items>
             <label>Timeout</label>
@@ -87,7 +87,7 @@
         <items>
             <label>Upsell 電話番号</label>
             <name>reqProviderCallerNumber</name>
-            <value>08042467663</value>
+            <value></value>
         </items>
         <label>Upsell プロファイル設定</label>
         <name>reqUpsellSettings</name>
